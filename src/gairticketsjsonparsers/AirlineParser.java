@@ -5,7 +5,6 @@
  */
 package gairticketsjsonparsers;
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,24 +18,25 @@ import java.net.URLEncoder;
  *
  * @author george
  */
-public class AirportParser {
+public class AirlineParser {
     
-    public final String LOG_TAG = "AirportParser";
-    public String airportSearchString = null;
-    private String API_KEY = null;    
+    public final String LOG_TAG = "AirlineParser";
+    public String airlineSearchString = null;
+    private String API_KEY = null;
 
-    AirportParser(String _apiKey) {
+    AirlineParser(String _apiKey) {
         API_KEY = _apiKey;
     }
     
+   
     
-    public String search(String _airportSearchString) {
-        airportSearchString = _airportSearchString;
+    public String search(String _airlineSearchString) {
+        airlineSearchString = _airlineSearchString;
         return search();
     }
     
     public String search() {
-        if (airportSearchString == null) {
+        if (airlineSearchString == null) {
             return null;
         }
         
@@ -44,12 +44,12 @@ public class AirportParser {
         BufferedReader reader = null;
         String airportJsonStr = null;
         
-        String API_BASE_URL = "https://api.sandbox.amadeus.com/v1.2/airports/autocomplete";
+        String API_BASE_URL = "https://iatacodes.org/api/v6/airlines";
         
         try {
 
-            String theURL = API_BASE_URL + "?apikey=" + API_KEY +
-                                "&term=" + URLEncoder.encode(airportSearchString, "UTF-8");
+            String theURL = API_BASE_URL + "?api_key=" + API_KEY +
+                                "&code=\"" + URLEncoder.encode(airlineSearchString, "UTF-8") + "\"";
             URL url = new URL(theURL);
             
 
