@@ -21,8 +21,8 @@ public class GJsonParser {
     
     public void Process() {
       try {
-            JSONObject forecastJson = new JSONObject(forecastJsonStr);
-            JSONArray weatherArray = forecastJson.getJSONArray(OWM_LIST);
+            JSONObject resultsJson = new JSONObject(JsonStr);
+            JSONArray resultsArray = resultsJson.getJSONArray(OWM_LIST);
 
             JSONObject cityJson = forecastJson.getJSONObject(OWM_CITY);
             String cityName = cityJson.getString(OWM_CITY_NAME);
